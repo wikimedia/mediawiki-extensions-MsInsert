@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Luis Felipe Schenone"
+		]
+	},
+	"msi-desc": "Adds a dropdown menu for inserting into the editor the content of certain pages",
+	"msi-insert-template": "Insert a template"
+}

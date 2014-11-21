@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Luis Felipe Schenone"
+		]
+	},
+	"msi-desc": "{{desc|name=MsInsert|url=https://www.mediawiki.org/wiki/Extension:MsInsert}}",
+	"msi-select-template": "Text of the default option of the dropdown menu",
+}

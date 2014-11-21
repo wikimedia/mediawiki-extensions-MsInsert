@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Luis Felipe Schenone"
+		]
+	},
+	"msi-desc": "Per Dropdown koennen bestimmte Seiten als Vorlage in den Editor geladen werden",
+	"msi-insert-template": "Vorlage einfügen"
+}
