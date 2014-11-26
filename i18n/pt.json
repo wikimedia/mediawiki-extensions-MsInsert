@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vitorvicentevalente"
+		]
+	},
+	"msi-desc": "Adiciona um menu para inserir no editor o conteúdo de certas páginas",
+	"msi-insert-template": "Inserir predefinição"
+}

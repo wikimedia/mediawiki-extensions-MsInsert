@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Luis Felipe Schenone"
+			"Luis Felipe Schenone",
+			"Macofe"
 		]
 	},
-	"msi-desc": "Agrega un menu para insertar al editor el contenido de ciertas páginas",
+	"msi-desc": "Agrega un menú desplegable para insertar el contenido de ciertas páginas en el editor",
 	"msi-insert-template": "Insertar una plantilla"
 }

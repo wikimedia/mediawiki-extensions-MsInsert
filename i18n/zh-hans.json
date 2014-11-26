@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"msi-desc": "加入下拉菜单用于插入某一页面的内容编辑器",
+	"msi-insert-template": "插入一个模板"
+}
