@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Luis Felipe Schenone",
-			"Metalhead64"
+			"Metalhead64",
+			"Purodha"
 		]
 	},
-	"msi-desc": "Ergänzt ein Dropdown-Menü zum Einfügen von Inhalten verschiedener Seiten in den Editor",
+	"msi-desc": "Fügt ein Dropdown-Menü zum Einfügen von Inhalten verschiedener Seiten in den Editor hinzu",
 	"msi-insert-template": "Vorlage einfügen"
 }
