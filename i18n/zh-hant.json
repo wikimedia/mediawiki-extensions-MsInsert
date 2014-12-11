@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"LNDDYL"
 		]
 	},
-	"msi-insert-template": "插入一個樣版"
+	"msi-insert-template": "插入一個模板"
 }
