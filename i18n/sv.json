@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Lokal Profil"
 		]
 	},
+	"msi-desc": "Lägger till en rullgardinsmenyn för att infoga innehållet av vissa sidor i editorn",
 	"msi-insert-template": "Infoga en mall"
 }
