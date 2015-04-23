@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"msi-desc": "Amiesta un menú estenderexable pa inxertar nel editor el conteníu de determinaes páxines",
+	"msi-insert-template": "Inxertar una plantía"
+}
