@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Banjo"
+			"Banjo",
+			"Elisardojm"
 		]
 	},
+	"msi-desc": "Engade un menú despregable para insertar o contido de certas páxinas no editor",
 	"msi-insert-template": "Inserir un modelo"
 }
