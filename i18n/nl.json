@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Esketti"
+		]
+	},
+	"msi-desc": "Voegt een dropdown-menu voor invoegen in de editor de inhoud van bepaalde pagina ' s",
+	"msi-insert-template": "Sjabloon invoegen"
+}
