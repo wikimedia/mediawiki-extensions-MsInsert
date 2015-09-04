@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Otokoume"
+		]
+	},
+	"msi-desc": "エディターに特定のページの内容を挿入するためのドロップダウンメニューを追加します",
+	"msi-insert-template": "テンプレートを挿入"
+}
