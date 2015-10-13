@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Umherirrender"
 		]
 	},
-	"msi-desc": "{{desc|name=MsInsert|url=https://www.mediawiki.org/wiki/Extension:MsInsert}}"
+	"msi-desc": "{{desc|name=MsInsert|url=https://www.mediawiki.org/wiki/Extension:MsInsert}}",
+	"msi-insert-template": "Used as option value in javascript"
 }
