@@ -1,7 +1,9 @@
 if ( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ) {
 	mw.loader.using( 'user.options', function () {
 		if ( mw.user.options.get( 'usebetatoolbar' ) && mw.user.options.get( 'showtoolbar' ) ) {
-			mw.loader.using( 'ext.wikiEditor.toolbar', msi_modifyToolbar1 );
+			$( '#wpTextbox1' ).on( 'wikiEditor-toolbar-doneInitialSections', function () {
+				mw.loader.using( 'ext.wikiEditor.toolbar', msi_modifyToolbar1 );
+			});
 		} else {
 			msi_modifyToolbar2();
 		}
@@ -17,11 +19,11 @@ function msi_modifyToolbar1() {
 	for ( var i = 0; i < msi_templates.length; i++ ) {
 		dropdownMenu.append( '<option value="' + ( i + 1 ) + '">' + msi_templates[ i ] + '</option>' );
 	}
-	$( '#editform' ).find( '.group-insert' ).append( dropdownMenu );
+	$( '#wikiEditor-section-main' ).find( '.group-insert' ).append( dropdownMenu );
 }
 
 function msi_modifyToolbar2() {
-	var dropdownMenu = $( '<select/>' ).attr( 'id', 'msi-select' ).change( function () {
+	var dropdownMenu = $( '<select/>' ).attr( 'id', 'msi-select' ).css({ 'margin': '4px', 'float': 'right' }).change( function () {
 		var selection = this.options[ this.selectedIndex ].value;
 		msi_templateSelect( selection );
 	});
@@ -45,7 +47,7 @@ function msi_templateSelect( i ) {
 		'rvprop': 'content'
 	}).done ( function ( data ) {
 		if ( data.hasOwnProperty( 'query' ) && data.query.hasOwnProperty( 'pages' ) ) {
-			//Extract the content from the JSON wrappers
+			// Extract the content from the JSON wrappers
 			var pages = data.query.pages;
 			for ( i in pages ) {
 				var content = pages[ i ].revisions['0']['*'];
