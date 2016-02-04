@@ -3,7 +3,7 @@
 $wgExtensionCredits['other'][] = array(
 	'name' => 'MsInsert',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:MsInsert',
-	'version' => '3.0',
+	'version' => '3.1',
 	'descriptionmsg' => 'msi-desc',
 	'license-name' => 'GPL-2.0+',
 	'author' => array( '[mailto:wiki@ratin.de Martin Schwindl]', '[mailto:wiki@keyler-consult.de Martin Keyler]', '[https://www.mediawiki.org/wiki/User:Luis_Felipe_Schenone Luis Felipe Schenone]' ),
