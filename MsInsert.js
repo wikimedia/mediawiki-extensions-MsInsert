@@ -9,7 +9,7 @@ if ( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ) {
 }
 
 function msi_modifyToolbar1() {
-	var dropdownMenu = $( '<select/>' ).attr( 'id', 'msi-select' ).css( 'margin', '4px' ).change( function () {
+	var dropdownMenu = $( '<select/>' ).attr( 'id', 'msi-select' ).css({ 'margin': '4px', 'float': 'right' }).change( function () {
 		var selection = this.options[ this.selectedIndex ].value;
 		msi_templateSelect( selection );
 	});
