@@ -1,0 +1,42 @@
+{
+	"name": "MsInsert",
+	"version": "3.0",
+	"author": [
+		"[mailto:wiki@ratin.de Martin Schwindl]",
+		"[mailto:wiki@keyler-consult.de Martin Keyler]",
+		"[https://www.mediawiki.org/wiki/User:Luis_Felipe_Schenone Luis Felipe Schenone]"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:MsInsert",
+	"descriptionmsg": "msi-desc",
+	"license-name": "GPL-2.0+",
+	"type": "other",
+	"MessagesDirs": {
+		"MsInsert": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"MsInsert": "MsInsert.body.php"
+	},
+	"ResourceModules": {
+		"ext.MsInsert": {
+			"scripts": "MsInsert.js",
+			"messages": [
+				"msi-insert-template"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "MsInsert"
+	},
+	"Hooks": {
+		"EditPage::showEditForm:initial": [
+			"MsInsert::start"
+		]
+	},
+	"config": {
+		"Templates": []
+	},
+	"manifest_version": 1
+}
