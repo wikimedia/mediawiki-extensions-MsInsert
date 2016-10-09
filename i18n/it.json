@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Selven"
+		]
+	},
+	"msi-desc": "Aggiunge un menu a discesa per l'inserimento il contenuto di alcune pagine nell'editor",
+	"msi-insert-template": "Inserire un modello"
+}
