@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"!Silent"
+		]
+	},
+	"msi-desc": "Adiciona um menu <i>dropdown</i> para inserir no editor de conteúdo de certas páginas",
+	"msi-insert-template": "Inserir uma predefinição"
+}
