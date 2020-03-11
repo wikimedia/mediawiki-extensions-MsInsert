@@ -31,9 +31,7 @@
 		"remoteExtPath": "MsInsert"
 	},
 	"Hooks": {
-		"EditPage::showEditForm:initial": [
-			"MsInsert::start"
-		]
+		"EditPage::showEditForm:initial": "MsInsert::start"
 	},
 	"config": {
 		"Templates": []
