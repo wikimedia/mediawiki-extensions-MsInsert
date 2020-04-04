@@ -2,18 +2,18 @@
 
 class MsInsert {
 
-	static function start() {
+	public static function start() {
 		global $wgOut, $wgTemplates;
 
 		$wgOut->addModules( 'ext.MsInsert' );
 
-		$templates = array();
+		$templates = [];
 		foreach ( $wgTemplates as $key => $template ) {
 			$title = Title::newFromText( htmlentities( $template ) );
 			$title2 = Title::newFromText( $template );
-			if ( $title and $title->exists() ) {
+			if ( $title && $title->exists() ) {
 				$templates[] = htmlentities( $template );
-			} elseif ( $title2 and $title2->exists() ) {
+			} elseif ( $title2 && $title2->exists() ) {
 				$templates[] = $template;
 			}
 		}

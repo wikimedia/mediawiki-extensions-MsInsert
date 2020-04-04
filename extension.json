@@ -16,7 +16,7 @@
 		]
 	},
 	"AutoloadClasses": {
-		"MsInsert": "MsInsert.body.php"
+		"MsInsert": "src/MsInsert.php"
 	},
 	"ResourceModules": {
 		"ext.MsInsert": {
