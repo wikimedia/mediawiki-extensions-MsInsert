@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sophivorus",
-			"Macofe"
+			"Macofe",
+			"Sophivorus"
 		]
 	},
 	"msi-desc": "Agrega un menú desplegable para insertar el contenido de ciertas páginas en el editor",

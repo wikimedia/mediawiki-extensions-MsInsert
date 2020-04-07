@@ -2,8 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Esketti",
-			"Siebrand",
-			"Mainframe98"
+			"Mainframe98",
+			"Siebrand"
 		]
 	},
 	"msi-desc": "Voegt een dropdownmenu toe voor het invoegen van de inhoud van bepaalde pagina's",

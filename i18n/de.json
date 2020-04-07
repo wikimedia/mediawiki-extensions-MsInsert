@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sophivorus",
 			"Metalhead64",
-			"Purodha"
+			"Purodha",
+			"Sophivorus"
 		]
 	},
 	"msi-desc": "Fügt ein Dropdown-Menü zum Einfügen von Inhalten verschiedener Seiten in den Editor hinzu",

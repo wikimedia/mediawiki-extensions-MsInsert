@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Laaknor",
-			"Jon Harald Søby"
+			"Jon Harald Søby",
+			"Laaknor"
 		]
 	},
 	"msi-desc": "Legger til en nedtrekksmeny for å sette inn redigeringsboksen i innholdet til visse sider",
