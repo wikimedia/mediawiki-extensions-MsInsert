@@ -1,9 +1,9 @@
 if ( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ) {
 	mw.loader.using( 'user.options', function () {
 		if ( mw.user.options.get( 'usebetatoolbar' ) ) {
-			$( '#wpTextbox1' ).on( 'wikiEditor-toolbar-doneInitialSections', function () {
-				mw.loader.using( 'ext.wikiEditor.toolbar', msi_modifyToolbar1 );
-			});
+			$.when(
+				mw.loader.using( 'ext.wikiEditor' ), $.ready
+			).then( msi_modifyToolbar1 );
 		} else {
 			msi_modifyToolbar2();
 		}
