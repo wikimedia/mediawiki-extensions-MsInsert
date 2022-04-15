@@ -1,4 +1,5 @@
 {
+	"name": "MsInsert",
 	"private": true,
 	"scripts": {
 		"test": "grunt test"
