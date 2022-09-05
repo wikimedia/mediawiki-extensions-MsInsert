@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"msi-desc": "Adde un menu disrolante pro inserer le contento de certe paginas in le editor",
+	"msi-insert-template": "Inserer un patrono"
+}
