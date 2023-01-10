@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"msi-desc": "Doda spustni meni za izpolnitev urejevalnika z vsebino nekaterih strani",
+	"msi-insert-template": "Vstavi predlogo"
+}
