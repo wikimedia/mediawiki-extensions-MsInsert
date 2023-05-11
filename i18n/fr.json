@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Wladek92"
+			"Wladek92",
+			"Verdy p"
 		]
 	},
-	"msi-desc": "Ajoute un menu déroulant pour l’insertion du contenu de certaines pages dans l’éditeur",
+	"msi-desc": "Ajoute un menu déroulant pour l’insertion dans l’éditeur du contenu de certaines pages",
 	"msi-insert-template": "Insérer un modèle"
 }
