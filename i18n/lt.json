@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"msi-desc": "Pridedamas išskleidžiamasis meniu tam tikrų puslapių turiniui įterpti į redaktorių",
+	"msi-insert-template": "Įterpti šabloną"
+}
