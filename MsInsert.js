@@ -46,11 +46,12 @@ const MsInsert = {
 			const textStart = textarea.value.substring( 0, selectionStart );
 			const textEnd = textarea.value.substring( selectionEnd, textarea.value.length );
 			textarea.value = textStart + content + textEnd;
-			textarea.selectionStart = selectionStart + content.length;
+			textarea.selectionStart = selectionStart;
 			textarea.selectionEnd = selectionStart + content.length;
 		} else {
 			textarea.value += content;
 		}
+		textarea.focus();
 	}
 };
 
