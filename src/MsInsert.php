@@ -2,23 +2,18 @@
 
 class MsInsert {
 
-	public static function start() {
-		global $wgOut, $wgTemplates;
-
-		$wgOut->addModules( 'ext.MsInsert' );
-
-		$templates = [];
-		foreach ( $wgTemplates as $key => $template ) {
-			$title = Title::newFromText( htmlentities( $template ) );
-			$title2 = Title::newFromText( $template );
-			if ( $title && $title->exists() ) {
-				$templates[] = htmlentities( $template );
-			} elseif ( $title2 && $title2->exists() ) {
-				$templates[] = $template;
+	public static function onResourceLoaderGetConfigVars( array &$vars, string $skin, Config $config ) {
+		$templates = $config->get( 'Templates' );
+		foreach ( $templates as $key => $template ) {
+			$title = Title::newFromText( $template );
+			if ( !$title || !$title->exists() ) {
+				unset( $templates[ $key ] );
 			}
 		}
-		$templates = json_encode( $templates );
-		$wgOut->addScript( "<script>var msi_templates = JSON.parse('$templates');</script>" );
-		return true;
+		$vars['wgMsInsertTemplates'] = $templates;
+	}
+
+	public static function onShowEditFormInitial( EditPage $editPage, OutputPage $output ) {
+		$output->addModules( 'ext.MsInsert' );
 	}
 }

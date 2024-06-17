@@ -1,6 +1,6 @@
 {
 	"name": "MsInsert",
-	"version": "3.2",
+	"version": "4.0",
 	"author": [
 		"[mailto:wiki@ratin.de Martin Schwindl]",
 		"[mailto:wiki@keyler-consult.de Martin Keyler]",
@@ -11,7 +11,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "other",
 	"requires": {
-		"MediaWiki": ">= 1.31.0"
+		"MediaWiki": ">= 1.39.0"
 	},
 	"MessagesDirs": {
 		"MsInsert": [
@@ -34,10 +34,13 @@
 		"remoteExtPath": "MsInsert"
 	},
 	"Hooks": {
-		"EditPage::showEditForm:initial": "MsInsert::start"
+		"ResourceLoaderGetConfigVars": "MsInsert::onResourceLoaderGetConfigVars",
+		"EditPage::showEditForm:initial": "MsInsert::onShowEditFormInitial"
 	},
 	"config": {
-		"Templates": []
+		"Templates": {
+			"value": []
+		}
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }

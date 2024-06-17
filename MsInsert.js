@@ -1,123 +1,57 @@
-if ( $.inArray( mw.config.get( 'wgAction' ), [ 'edit', 'submit' ] ) !== -1 ) {
-	mw.loader.using( 'user.options', function () {
-		if ( mw.user.options.get( 'usebetatoolbar' ) ) {
-			$.when(
-				mw.loader.using( 'ext.wikiEditor' ), $.ready
-			).then( msi_modifyToolbar1 );
-		} else {
-			msi_modifyToolbar2();
+const MsInsert = {
+
+	init: function () {
+		mw.hook( 'wikiEditor.toolbarReady' ).add( MsInsert.addDropdownMenu );
+	},
+
+	addDropdownMenu: function ( $textarea ) {
+		const $wikiEditor = $textarea.closest( '.wikiEditor-ui' );
+		let $dropdownMenu = $( '<select id="msi-select"></select>' ).css( 'margin', '0 4px' ).on( 'change', $wikiEditor, MsInsert.onTemplateSelect );
+		$dropdownMenu.append( '<option>' + mw.msg( 'msi-insert-template' ) + '</option>' );
+		const templates = mw.config.get( 'wgMsInsertTemplates' );
+		for ( let template of templates ) {
+			$dropdownMenu.append( '<option>' + template + '</option>' );
 		}
-	});
-}
+		$textarea.closest( '.wikiEditor-ui' ).find( '#wikiEditor-section-main .group-insert' ).append( $dropdownMenu );
+	},
 
-function msi_modifyToolbar1() {
-	var dropdownMenu = $( '<select/>' ).attr( 'id', 'msi-select' ).css({ 'margin': '4px', 'float': 'right' }).change( function () {
-		var selection = this.options[ this.selectedIndex ].value;
-		msi_templateSelect( selection );
-	});
-	dropdownMenu.append( '<option value="0">' + mw.msg( 'msi-insert-template' ) + '</option>' );
-	for ( var i = 0; i < msi_templates.length; i++ ) {
-		dropdownMenu.append( '<option value="' + ( i + 1 ) + '">' + msi_templates[ i ] + '</option>' );
-	}
-	$( '#wikiEditor-section-main' ).find( '.group-insert' ).append( dropdownMenu );
-}
-
-function msi_modifyToolbar2() {
-	var dropdownMenu = $( '<select/>' ).attr( 'id', 'msi-select' ).css({ 'margin': '4px', 'float': 'right' }).change( function () {
-		var selection = this.options[ this.selectedIndex ].value;
-		msi_templateSelect( selection );
-	});
-	dropdownMenu.append( '<option value="0">' + mw.msg( 'msi-insert-template' ) + '</option>' );
-	for ( var i = 0; i < msi_templates.length; i++ ) {
-		dropdownMenu.append( '<option value="' + ( i + 1 ) + '">' + msi_templates[ i ] + '</option>' );
-	}
-	$( '#toolbar' ).append( dropdownMenu );
-}
-
-function msi_templateSelect( i ) {
-	if ( i === 0 ) {
-		return false;
-	}
-	var api = new mw.Api();
-	api.get({
-		'format': 'json',
-		'action': 'query',
-		'titles': msi_templates[ i - 1 ],
-		'prop': 'revisions',
-		'rvprop': 'content'
-	}).done ( function ( data ) {
-		if ( data.hasOwnProperty( 'query' ) && data.query.hasOwnProperty( 'pages' ) ) {
-			// Extract the content from the JSON wrappers
-			var pages = data.query.pages;
-			for ( i in pages ) {
-				var content = pages[ i ].revisions['0']['*'];
+	onTemplateSelect: function ( event ) {
+		const template = this.options[ this.selectedIndex ].value;
+		if ( !template ) {
+			return false;
+		}
+		new mw.Api().get( {
+			action: 'query',
+			titles: template,
+			prop: 'revisions',
+			rvprop: 'content',
+			rvslots: 'main',
+			format: 'json',
+			formatversion: 2
+		} ).done( function ( data ) {
+			if ( data.query && data.query.pages ) {
+				const content = data.query.pages[0].revisions[0].slots.main.content;
+				const $wikiEditor = event.data;
+				const textarea = $wikiEditor.find( '#wpTextbox1' )[0];
+				MsInsert.templateInsert( textarea, content );
+				$wikiEditor.find( '#msi-select option' ).first().prop( 'selected', true );
 			}
-			msi_templateInsert( content, '\n', '\n' );
-			$( '#msi-select option[value="0"]').prop( 'selected', true );
-		}
-	});
-}
+		} );
+	},
 
-function msi_templateInsert( inhalt, tagOpen, tagClose ) {
-	this.editor = document.getElementById( 'wpTextbox1' );
-	var sampleText = inhalt;
-	var isSample = false;
-
-	if ( document.selection && document.selection.createRange ) {
-		if ( document.documentElement && document.documentElement.scrollTop ) {
-			var windowScroll = document.documentElement.scrollTop
-		} else if ( document.body ) {
-			var windowScroll = document.body.scrollTop;
-		}
-
-		// Get current selection
-		this.editor.focus();
-		var range = document.selection.createRange();
-		var selectedText = range.text;
-
-		// Insert tags
-		msi_checkSelectedText();
-		range.text = tagOpen + selectedText + tagClose;
-
-		// Restore window scroll position
-		if ( document.documentElement && document.documentElement.scrollTop ) {
-			document.documentElement.scrollTop = windowScroll
-		} else if ( document.body ) {
-			document.body.scrollTop = windowScroll;
-		}
-	} else if ( this.editor.selectionStart || this.editor.selectionStart == '0' ) { // Mozilla
-		// Save textarea scroll position
-		var textScroll = this.editor.scrollTop;
-
-		// Get current selection
-		this.editor.focus();
-
-		var selectionStart = this.editor.selectionStart;
-		var selectionEnd = this.editor.selectionEnd;
-		var selectedText = this.editor.value.substring( selectionStart, selectionEnd );
-
-		// Insert tags
-		msi_checkSelectedText();
-		this.editor.value = this.editor.value.substring( 0, selectionStart ) + tagOpen + selectedText + tagClose + this.editor.value.substring( selectionEnd, this.editor.value.length );
-
-		// Set new selection
-		if ( isSample ) {
-			this.editor.selectionStart = selectionStart + tagOpen.length + selectedText.length;
-			this.editor.selectionEnd = selectionStart + tagOpen.length + selectedText.length;
+	templateInsert: function ( textarea, content ) {
+		if ( textarea.selectionStart || textarea.selectionStart === 0 ) {
+			const selectionStart = textarea.selectionStart;
+			const selectionEnd = textarea.selectionEnd;
+			const textStart = textarea.value.substring( 0, selectionStart );
+			const textEnd = textarea.value.substring( selectionEnd, textarea.value.length );
+			textarea.value = textStart + content + textEnd;
+			textarea.selectionStart = selectionStart + content.length;
+			textarea.selectionEnd = selectionStart + content.length;
 		} else {
-			this.editor.selectionStart = this.editor.selectionStart;
-			this.editor.selectionEnd = this.editor.selectionStart;
+			textarea.value += content;
 		}
-		this.editor.scrollTop = textScroll;
 	}
+};
 
-	function msi_checkSelectedText() {
-		if ( !selectedText ) {
-			selectedText = sampleText;
-			isSample = true;
-		} else if ( selectedText.charAt( selectedText.length - 1 ) === ' ' ) { // Exclude ending space char
-			selectedText = selectedText.substring( 0, selectedText.length - 1 );
-			tagClose += ' ';
-		}
-	}
-}
+$( MsInsert.init );
