@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Revi"
+			"Revi",
+			"Tensama0415"
 		]
 	},
+	"msi-desc": "특정 문서의 내용을 편집기에 삽입할 수 있는 드롭다운 메뉴를 추가합니다",
 	"msi-insert-template": "틀 삽입"
 }
