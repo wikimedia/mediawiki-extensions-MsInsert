@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"msi-desc": "Pridáva rozbaľovaciu ponuku na vkladanie obsahu určitých stránok do editora",
+	"msi-insert-template": "Vložiť šablónu"
+}
